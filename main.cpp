@@ -4,6 +4,14 @@
 #include <ctime>
 #include <utility>
 using namespace std;
+bool win(int *mass)
+{
+	for (int i=0;i<16;i++)
+	{
+		if(mass[i]!=mass[i+1]-1) return false;break;
+	}
+	return true;
+}
 void vpravo(int *mass)
 {
 	int k;
@@ -61,8 +69,9 @@ int main(int argc, char** argv) {
 	zapoln(mass);
 	tablica(mass);
 	cout<<"Insert operation"<<endl;
-	while(cin>>op)
+	while(win)
 	{
+		cin>>op;
 		if (op=='l') vpravo(mass);
 		else if (op=='j') vniz(mass);
 		else if (op=='h') vlevo(mass);
